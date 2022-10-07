@@ -12,7 +12,7 @@ public class Druide  {
 		this.nom = nom; 
 		this.effetPotionMin = effetPotionMin; 
 		this.effetPotionMax = effetPotionMax; 
-		parler("Bonjour,  je  suis  le  druide  "  +  nom  +  "  et  ma  potion  peut  aller d'une force " + effetPotionMin + " à "+ effetPotionMax + "."); 
+		parler("Bonjour,  je  suis  le  druide  "  +  nom  +  "  et  ma  potion  peut  aller d'une force " + effetPotionMin + " Ã  "+ effetPotionMax + "."); 
 	} 
 	
 	public String getNom() { 
@@ -20,7 +20,7 @@ public class Druide  {
 	} 
 	
 	public void parler(String texte) { 
-	System.out.println(prendreParole() + "« " + texte + "»"); 
+	System.out.println(prendreParole() + "<< " + texte + ">>"); 
 	} 
 	
 	private String prendreParole() { 
@@ -30,6 +30,28 @@ public class Druide  {
 	public void preparerPotion() {
 		
 		Random jva=new Random();
+		forcePotion=jva.nextInt((effetPotionMin+effetPotionMax)-effetPotionMin);
+		if (forcePotion>7) {
+			parler("J'ai preparÃ© une super potion de force");
+		} else {
+			parler("Je n'ai pas trouver tous les ingredients,ma potion est seulement de force "+forcePotion+".");
+
+		}
+	}
+	public  void booster(Gaulois test) {
+		if (test.getNom().equalsIgnoreCase("Obelix")) {
+			parler("Non, Obelix!...Tu n'auras pas de potion magique!");
+			
+		}
 	}
 	
+	public static void main(String[] args) {
+		Gaulois asterix;
+		asterix=new Gaulois("Obelix",8,1);
+		Druide panoramix=new Druide("panoramix",5,10);
+		panoramix.preparerPotion();
+		panoramix.booster(asterix);
+	}
+
+
 } 
