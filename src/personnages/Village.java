@@ -3,14 +3,14 @@ package personnages;
 public class Village {
 	private static final int nbVillageoisMaximum=30;
 	private String nom;
-	private Chef[] chefvillage;
+	private Chef chef;
 	private Gaulois[] villageois;
 	private int nbvillageois=0;
 	
 	public Village(String nom,int nbVillageoisMaximum) {
 		this.nom = nom;
 		this.villageois=new Gaulois[nbVillageoisMaximum];
-		this.chefvillage=new Chef[nbVillageoisMaximum];
+		
 	}
 	public void ajouterHabitant(Gaulois gauloisaajouter) {
 		if (nbvillageois<nbVillageoisMaximum) {
@@ -19,20 +19,19 @@ public class Village {
 			
 		}
 	}
-	public void ajouterChef(Chef chefaajouter) {
-		if (nbvillageois<nbVillageoisMaximum) {
-			chefvillage[nbvillageois]=chefaajouter;
-					nbvillageois++;
-			
-		}
-	}
 	
-	public void trouverHabitant(int numvillageois) {
-		System.out.println("je suis le villageois numero"+numvillageois+".");
+	
+	public Gaulois trouverHabitant(int numvillageois) {
+		return villageois[numvillageois];
+	
 	}
-	//public void setChef(Chef chef) {
-		//this.chef = chef;
-	//}
+	public void setChef(Chef chef) {
+		this.chef = chef;
+	}
+	public void afficherVillageois() {
+		System.out.println("Dand le village du chef"+chef.getNom()+"vivent les légendaires gaulois-"+    villageois[0]+"-"+   villageois[1]);
+		
+	}
 	public String getNom() {
 		return nom;
 	}
@@ -40,12 +39,20 @@ public class Village {
 	public static void main(String[] args) {
 		Village village=new Village("Village des Irréductibles",30);
 		Gaulois asterix=new Gaulois("asterix",8,1);
+		Gaulois obelix=new Gaulois("Obelix",25,1);
 		Chef Abaracourcix=new Chef("Abaracourcix",6,1,village);
 		village.ajouterHabitant(asterix);
-		village.ajouterChef(Abaracourcix);
-		//Gaulois gaulois=village.trouverHabitant(30);
-		//on obtient l'exception du poinprécédent parce que dans notre tableau Gaulois on atteind pas la case 30 vu qu'on commence à zero.
+		village.ajouterHabitant(obelix);
+		village.setChef(Abaracourcix);
 		
+		//Gaulois gaulois=village.trouverHabitant(30);
+		//on obtient l'exception du point précédent parce que dans notre tableau Gaulois on atteind pas la case 30 vu qu'on commence à zero.
+		Gaulois gaulois=village.trouverHabitant(0);
+		System.out.println(gaulois);
+		//null
+		//Etant donné que mon tableau Gaulois n'a qu'une seule valeur présentement et se trouve dans la case 0
+		//La case 1 sera par défaut initialisé à null car on nsait pas ce qui se trouve à l'intérieur
+		asterix.afficherVillageois();
 	}
 
 }
