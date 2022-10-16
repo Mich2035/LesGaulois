@@ -29,8 +29,10 @@ public class Village {
 		this.chef = chef;
 	}
 	public void afficherVillageois() {
-		System.out.println("Dand le village du chef"+chef.getNom()+"vivent les légendaires gaulois-"+    villageois[0]+"-"+   villageois[1]);
-		
+		String info="Dand le village du chef "+chef.getNom()+" vivent les légendaires gaulois ";
+		System.out.println(info);
+		for(int i=0;i<nbvillageois;i++)
+			System.out.println("-"+villageois[i].getNom());
 	}
 	public String getNom() {
 		return nom;
@@ -52,7 +54,7 @@ public class Village {
 		//null
 		//Etant donné que mon tableau Gaulois n'a qu'une seule valeur présentement et se trouve dans la case 0
 		//La case 1 sera par défaut initialisé à null car on nsait pas ce qui se trouve à l'intérieur
-		asterix.afficherVillageois();
+		village.afficherVillageois();
 	}
 
 }
