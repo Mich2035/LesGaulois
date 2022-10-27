@@ -81,7 +81,7 @@ public class Romain {
 		String texte = "Ma force est de " + this.force + ", et la force du coup est de " + forceCoup;
 		int resistanceEquipement = 0;
 		if (nbEquipement !=0){
-
+			texte+="\nMais heureusement, grâce à mon équipement sa force est diminué de ";
 			for (int i = 0; i < nbEquipement;i++) {
 				if ((equipements[i] != null && equipements[i].equals(Equipement.BOUCLIER))) {
 					resistanceEquipement += 8;
@@ -98,7 +98,7 @@ public class Romain {
 		return forceCoup;
 	}
 
-	private void equipement(Equipement equipement) {
+	public void equipement(Equipement equipement) {
 
 		if (nbEquipement < equipements.length) {
 			equipements[nbEquipement] = equipement;
